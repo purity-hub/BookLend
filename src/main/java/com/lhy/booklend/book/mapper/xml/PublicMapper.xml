@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--nameplace只能其接口，对其实现-->
+<mapper namespace="com.lhy.booklend.book.mapper.PublicMapper">
+    <!--查询所有出版社-->
+    <select id="findAll" resultType="String">
+        select pName from public
+    </select>
+    <select id="findAllPublic" resultType="com.lhy.booklend.book.entity.Public">
+        select * from public
+    </select>
+    <insert id="addPublic">
+        insert into public(pName, telegraph, phone, zip, address)
+        values(#{pName},#{telegraph},#{phone},#{zip},#{address})
+    </insert>
+
+</mapper>

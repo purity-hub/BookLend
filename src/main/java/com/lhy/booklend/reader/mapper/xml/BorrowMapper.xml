@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--nameplace只能其接口，对其实现-->
+<mapper namespace="com.lhy.booklend.reader.mapper.BorrowMapper">
+    <resultMap id="borrowlist" type="com.lhy.booklend.reader.entity.Borrow">
+        <result column="sNumber" property="sNumber"></result>
+        <result column="rNo" property="rNo"></result>
+        <result column="bNo" property="bNo"></result>
+        <result column="bdate" property="bdate"></result>
+        <association property="bName" javaType="String">
+            <result column="bName" property="bName"></result>
+        </association>
+        <association property="bLocation" javaType="String">
+            <result column="bLocation" property="bLocation"></result>
+        </association>
+    </resultMap>
+    <select id="findAll" resultType="com.lhy.booklend.reader.entity.Borrow">
+        select * from borrow where rNo=#{rNo}
+    </select>
+    <insert id="insertBorrow">
+        insert into borrow(sNumber,rNo,bNo,bdate)
+        values(#{sNumber},#{rNo},#{bNo},#{bdate})
+    </insert>
+    <update id="updaterdate">
+        update borrow
+        set rdate=#{rdate}
+        where sNumber=#{sNumber} and rNo=#{rNo} and bNo=#{bNo}
+    </update>
+    <select id="findnotread" resultMap="borrowlist">
+        select sNumber,borrow.rNo rNo,borrow.bNo bNo,bName,bLocation,bdate from borrow,book,booklist
+        where borrow.bNo=book.bNo and book.ISBN=booklist.ISBN and rNo=#{rNo} and rdate is null
+    </select>
+    <update id="updatefine">
+        update borrow
+        set fine=#{fine}
+        where sNumber=#{sNumber} and rNo=#{rNo} and bNo=#{bNo}
+    </update>
+    <select id="searchbdate" resultType="java.sql.Date">
+        select bdate from borrow
+        where sNumber=#{sNumber} and rNo=#{rNo} and bNo=#{bNo}
+    </select>
+    <update id="updatereason">
+        update borrow
+        set reason=#{reason}
+        where sNumber=#{sNumber} and rNo=#{rNo} and bNo=#{bNo}
+    </update>
+</mapper>

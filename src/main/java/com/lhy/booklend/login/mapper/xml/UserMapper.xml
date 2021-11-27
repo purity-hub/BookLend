@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--nameplace只能其接口，对其实现-->
+<mapper namespace="com.lhy.booklend.login.mapper.UserMapper">
+    <select id="findAll" resultType="com.lhy.booklend.login.entity.User">
+        SELECT * from user
+    </select>
+
+
+</mapper>

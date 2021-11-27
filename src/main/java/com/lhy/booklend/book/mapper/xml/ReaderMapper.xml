@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--nameplace只能其接口，对其实现-->
+<mapper namespace="com.lhy.booklend.book.mapper.ReaderMapper">
+    <!--查询所有读者-->
+    <select id="findAll" resultType="com.lhy.booklend.book.entity.Reader">
+        select * from reader
+    </select>
+    <update id="updaterSex">
+        update reader
+        set rSex=#{rSex}
+        where rNo=#{rNo}
+    </update>
+    <update id="updaterIdcard">
+        update reader
+        set rIdcard=#{rIdcard}
+        where rNo=#{rNo}
+    </update>
+    <update id="updaterName">
+        update reader
+        set rName=#{rName}
+        where rNo=#{rNo}
+    </update>
+    <update id="updaterTel">
+        update reader
+        set rTel=#{rTel}
+        where rNo=#{rNo}
+    </update>
+    <update id="updatecategory">
+        update reader
+        set category=#{category}
+        where rNo=#{rNo}
+    </update>
+    <select id="searchbyname" resultType="String">
+        select rNo from reader where rName=#{rName}
+    </select>
+
+</mapper>

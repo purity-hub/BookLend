@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.lhy.booklend.reader.controller.ReaderController">
+   <children>
+      <TabPane layoutX="-2.0" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="借阅图书">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="books" prefHeight="248.0" prefWidth="600.0">
+                          <columns>
+                            <TableColumn fx:id="bNo" prefWidth="75.0" text="书号" />
+                              <TableColumn fx:id="bookname" prefWidth="168.0" text="书名" />
+                            <TableColumn fx:id="ISBN" prefWidth="122.0" text="ISBN" />
+                              <TableColumn fx:id="bDamaged" prefWidth="75.0" text="完好程度" />
+                              <TableColumn fx:id="booknums" prefWidth="75.0" text="图书数量" />
+                              <TableColumn fx:id="bLocation" prefWidth="84.0" text="存放位置" />
+                          </columns>
+                        </TableView>
+                        <ListView fx:id="borrowing" layoutY="274.0" prefHeight="88.0" prefWidth="215.0" />
+                        <HBox layoutX="-1.0" layoutY="248.0" prefHeight="28.0" prefWidth="216.0">
+                           <children>
+                              <Label prefHeight="26.0" prefWidth="80.0" text="选中的书籍" />
+                              <Label prefHeight="28.0" prefWidth="120.0" text="      按住Ctrl多选" />
+                           </children>
+                        </HBox>
+                        <Button layoutX="215.0" layoutY="276.0" mnemonicParsing="false" onAction="#delete" prefHeight="30.0" prefWidth="64.0" text="删除" />
+                        <Button layoutX="214.0" layoutY="318.0" mnemonicParsing="false" onAction="#lend" prefHeight="30.0" prefWidth="67.0" text="借阅" />
+                     </children></AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="归还图书">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="rlend" prefHeight="274.0" prefWidth="600.0">
+                          <columns>
+                            <TableColumn fx:id="rsNumber" prefWidth="108.0" text="借书编号" />
+                            <TableColumn fx:id="rrNo" prefWidth="76.0" text="读者编号" />
+                              <TableColumn fx:id="rbNo" prefWidth="76.0" text="图书编号" />
+                              <TableColumn fx:id="rbName" prefWidth="161.0" text="书名" />
+                              <TableColumn fx:id="rbLocation" prefWidth="92.0" text="存放位置" />
+                              <TableColumn fx:id="rbdate" prefWidth="86.0" text="借阅时间" />
+                          </columns>
+                        </TableView>
+                        <Label layoutY="283.0" text="借书编号" />
+                        <TextField fx:id="gsNumber" layoutX="60.0" layoutY="278.0" prefHeight="15.0" prefWidth="145.0" />
+                        <Label layoutX="223.0" layoutY="283.0" text="图书编号" />
+                        <TextField fx:id="gbNo" layoutX="283.0" layoutY="278.0" prefHeight="17.0" prefWidth="95.0" />
+                        <Label layoutX="15.0" layoutY="327.0" text="书名" />
+                        <TextField fx:id="gbName" layoutX="51.0" layoutY="322.0" prefHeight="12.0" prefWidth="202.0" />
+                        <Label layoutX="389.0" layoutY="283.0" text="存放位置" />
+                        <TextField fx:id="gbLocation" layoutX="457.0" layoutY="278.0" prefHeight="18.0" prefWidth="129.0" />
+                        <Label layoutX="264.0" layoutY="327.0" text="破损情况" />
+                        <ChoiceBox fx:id="gbDamaged" layoutX="331.0" layoutY="322.0" prefHeight="19.0" prefWidth="65.0" />
+                        <Button layoutX="415.0" layoutY="322.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="68.0" text="归还" onAction="#bookreturn"/>
+                     </children></AnchorPane>
+            </content>
+          </Tab>
+            <Tab text="查询借阅情况">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="borrow" layoutX="-1.0" prefHeight="361.0" prefWidth="606.0">
+                          <columns>
+                            <TableColumn fx:id="sNumber" prefWidth="98.0" text="借书编号" />
+                            <TableColumn fx:id="brNo" prefWidth="68.0" text="读者编号" />
+                              <TableColumn fx:id="bbNo" prefWidth="71.0" text="图书编号" />
+                              <TableColumn fx:id="bdate" prefWidth="77.0" text="借阅时间" />
+                              <TableColumn fx:id="rdate" prefWidth="77.0" text="归还时间" />
+                              <TableColumn fx:id="fine" prefWidth="59.0" text="罚款" />
+                              <TableColumn fx:id="reason" prefWidth="153.0" text="罚款原因" />
+                          </columns>
+                        </TableView>
+                     </children></AnchorPane>
+              </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>

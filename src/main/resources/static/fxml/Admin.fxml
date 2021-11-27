@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.canvas.*?>
+<?import javafx.scene.web.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.collections.FXCollections?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.lhy.booklend.book.controller.BookController">
+   <children>
+      <TabPane prefHeight="414.0" prefWidth="602.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="图书管理">
+               <content>
+                  <TilePane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="books" prefHeight="296.0" prefWidth="606.0">
+                          <columns>
+                            <TableColumn fx:id="bNo" prefWidth="67.0" text="bNo" />
+                              <TableColumn fx:id="bookname" prefWidth="160.0" text="书名" />
+                            <TableColumn fx:id="ISBN" prefWidth="108.0" text="ISBN" />
+                              <TableColumn fx:id="bDamaged" prefWidth="70.0" text="完好程度" />
+                              <TableColumn fx:id="bLocation" prefWidth="70.0" text="存放位置" />
+                              <TableColumn fx:id="bPrice" minWidth="8.0" prefWidth="61.0" text="价格" />
+                              <TableColumn fx:id="booknums" prefWidth="64.0" text="数量" />
+                          </columns>
+                        </TableView>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                           <children>
+                              <Label layoutX="14.0" layoutY="14.0" text="bNo" />
+                              <TextField fx:id="bNoAuto" layoutX="57.0" layoutY="9.0" prefHeight="16.0" prefWidth="77.0" />
+                              <Label layoutX="171.0" layoutY="14.0" text="ISBN" />
+                              <ChoiceBox fx:id="ISBNAuto" layoutX="213.0" layoutY="9.0" prefHeight="21.0" prefWidth="202.0" />
+                              <Label layoutX="430.0" layoutY="14.0" text="完好程度" />
+                               <ChoiceBox fx:id="choicebox" layoutX="495.0" layoutY="9.0" prefHeight="10.0" prefWidth="98.0">
+<!--                                   <items>-->
+<!--                                       <FXCollections>-->
+<!--                                           -->
+<!--                                       </FXCollections>-->
+<!--                                   </items>-->
+                               </ChoiceBox>
+                              <Label layoutX="11.0" layoutY="49.0" text="存放位置" />
+                              <TextField fx:id="bLocationAuto" layoutX="77.0" layoutY="44.0" prefHeight="19.0" prefWidth="107.0" />
+                              <Label layoutX="206.0" layoutY="49.0" text="价格" />
+                              <TextField fx:id="bPriceAuto" layoutX="245.0" layoutY="44.0" prefHeight="15.0" prefWidth="61.0" />
+                              <Button layoutX="328.0" layoutY="44.0" mnemonicParsing="false" onAction="#edit" text="修改" />
+                              <Button layoutX="396.0" layoutY="44.0" mnemonicParsing="false" onAction="#add" text="添加" />
+                              <Button layoutX="461.0" layoutY="44.0" mnemonicParsing="false" onAction="#delete" text="删除" />
+                              <Button layoutX="523.0" layoutY="44.0" mnemonicParsing="false" onAction="#clear" prefHeight="14.0" prefWidth="55.0" text="清除" />
+                           </children>
+                        </AnchorPane>
+                     </children></TilePane>
+               </content>
+            </Tab>
+            <Tab text="图书采购">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <VBox layoutY="6.0" prefHeight="283.0" prefWidth="100.0">
+                           <children>
+                              <Label prefHeight="32.0" prefWidth="98.0" text="     出版社" textAlignment="CENTER" />
+                              <ListView fx:id="publics" prefHeight="252.0" prefWidth="100.0" />
+                           </children></VBox>
+                        <TableView fx:id="booklist2" layoutX="102.0" prefHeight="292.0" prefWidth="503.0">
+                          <columns>
+                            <TableColumn fx:id="buyisbn" prefWidth="104.0" text="ISBN" />
+                            <TableColumn fx:id="bName" prefWidth="112.0" text="书名" />
+                              <TableColumn fx:id="bClass" prefWidth="67.0" text="类别" />
+                              <TableColumn fx:id="bPublic" prefWidth="120.0" text="出版社" />
+                              <TableColumn fx:id="bAuthor" prefWidth="64.0" text="作者" />
+                          </columns>
+                        </TableView>
+                        <Label layoutX="8.0" layoutY="292.0" prefHeight="29.0" prefWidth="52.0" text="ISBN" />
+                        <TextField fx:id="bisbn" layoutX="60.0" layoutY="299.0" prefHeight="18.0" prefWidth="128.0" />
+                        <Label layoutX="188.0" layoutY="292.0" prefHeight="28.0" prefWidth="62.0" text="书名" />
+                        <TextField fx:id="buyname" layoutX="219.0" layoutY="299.0" prefHeight="16.0" prefWidth="87.0" />
+                        <Label layoutX="317.0" layoutY="292.0" prefHeight="28.0" prefWidth="37.0" text="类别" />
+                        <TextField fx:id="buyclass" layoutX="355.0" layoutY="299.0" prefHeight="19.0" prefWidth="153.0" />
+                        <Label layoutX="11.0" layoutY="333.0" prefHeight="23.0" prefWidth="46.0" text="出版社" />
+                        <TextField fx:id="buypublic" layoutX="60.0" layoutY="330.0" prefHeight="19.0" prefWidth="147.0" />
+                        <Label layoutX="219.0" layoutY="332.0" prefHeight="25.0" prefWidth="37.0" text="作者" />
+                        <TextField fx:id="buyauthor" layoutX="253.0" layoutY="329.0" prefHeight="12.0" prefWidth="83.0" />
+                        <Button layoutX="499.0" layoutY="329.0" mnemonicParsing="false" onAction="#buybook" prefHeight="30.0" prefWidth="69.0" text="购买" />
+                        <Label layoutX="344.0" layoutY="334.0" text="价格" />
+                        <TextField fx:id="buyprice" layoutX="382.0" layoutY="329.0" prefHeight="15.0" prefWidth="98.0" />
+                     </children></AnchorPane>
+              </content>
+            </Tab>
+            <Tab text="出版社信息">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="publicreal" prefHeight="289.0" prefWidth="602.0">
+                          <columns>
+                            <TableColumn fx:id="publicname" prefWidth="109.0" text="出版社" />
+                            <TableColumn fx:id="telegraph" text="电报编号" />
+                              <TableColumn fx:id="phone" prefWidth="102.0" text="电话" />
+                              <TableColumn fx:id="zip" minWidth="0.0" prefWidth="83.0" text="邮编" />
+                              <TableColumn fx:id="address" prefWidth="226.0" text="地址" />
+                          </columns>
+                        </TableView>
+                        <Label layoutX="14.0" layoutY="297.0" prefHeight="30.0" prefWidth="53.0" text="出版社" />
+                        <TextField fx:id="addpName" layoutX="67.0" layoutY="297.0" prefHeight="12.0" prefWidth="127.0" />
+                        <Label layoutX="204.0" layoutY="298.0" prefHeight="25.0" prefWidth="62.0" text="电报编号" />
+                        <TextField fx:id="addtelegraph" layoutX="266.0" layoutY="296.0" prefHeight="13.0" prefWidth="113.0" />
+                        <Label layoutX="393.0" layoutY="296.0" prefHeight="29.0" prefWidth="36.0" text="电话" />
+                        <TextField fx:id="addphone" layoutX="429.0" layoutY="296.0" prefHeight="13.0" prefWidth="164.0" />
+                        <Label layoutX="14.0" layoutY="334.0" prefHeight="27.0" prefWidth="46.0" text="邮编" />
+                        <TextField fx:id="addzip" layoutX="51.0" layoutY="333.0" prefHeight="11.0" prefWidth="79.0" />
+                        <Label layoutX="143.0" layoutY="335.0" prefHeight="26.0" prefWidth="40.0" text="地址" />
+                        <TextField fx:id="addaddress" layoutX="177.0" layoutY="333.0" prefHeight="15.0" prefWidth="320.0" />
+                        <Button layoutX="511.0" layoutY="333.0" mnemonicParsing="false" onAction="#addPublic" prefHeight="30.0" prefWidth="77.0" text="增加" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+            <Tab text="读者信息">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="readers" layoutX="2.0" layoutY="1.0" prefHeight="381.0" prefWidth="602.0">
+                          <columns>
+                            <TableColumn fx:id="rNo" prefWidth="91.0" text="借书证号" />
+                            <TableColumn fx:id="rIdcard" prefWidth="124.0" text="身份证号" />
+                              <TableColumn fx:id="rName" prefWidth="63.0" text="姓名" />
+                              <TableColumn fx:id="rSex" prefWidth="40.0" text="性别" />
+                              <TableColumn fx:id="rBirthday" prefWidth="74.0" text="生日" />
+                              <TableColumn fx:id="rTel" prefWidth="103.0" text="电话" />
+                              <TableColumn fx:id="category" prefWidth="105.0" text="类别" />
+                          </columns>
+                        </TableView>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+      <AnchorPane layoutX="402.0" layoutY="-116.0" prefHeight="150.0" prefWidth="200.0">
+         <children>
+            <Label layoutY="126.0" text="当前时间:" />
+            <Label fx:id="nowtime" layoutX="64.0" layoutY="120.0" prefHeight="20.0" prefWidth="133.0" text="获取当前时间" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

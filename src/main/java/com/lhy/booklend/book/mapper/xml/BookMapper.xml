@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--nameplace只能其接口，对其实现-->
+<mapper namespace="com.lhy.booklend.book.mapper.BookMapper">
+    <!--查询所有书籍列表-->
+    <resultMap id="bookblist" type="com.lhy.booklend.book.entity.Book">
+        <result column="bNo" property="bNo"></result>
+        <result column="isbn" property="isbn"></result>
+        <result column="bDamaged" property="bDamaged"></result>
+        <result column="bLocation" property="bLocation"></result>
+        <result column="bPrice" property="bPrice"></result>
+        <result column="booknums" property="booknums"></result>
+        <association property="bookname" javaType="String">
+            <result  column="bName" property="bName" ></result>
+        </association>
+    </resultMap>
+    <select id="findAllBooks" resultMap="bookblist">
+        select bNo,bName,book.ISBN isbn,bDamaged,bLocation,bPrice,booknums from book,booklist
+        where book.ISBN=booklist.ISBN
+    </select>
+    <!--修改图书-->
+    <update id="edit">
+        update book set ISBN=#{isbn},bDamaged=#{bDamaged},bLocation=#{bLocation},bPrice=#{bPrice}
+        where bNo=#{bNo}
+    </update>
+    <!--增加书籍-->
+    <insert id="add">
+        insert into book(bNo, ISBN, bDamaged, bLocation, bPrice)
+        values (#{bNo},#{isbn},#{bDamaged},#{bLocation},#{bPrice})
+    </insert>
+    <!--查找bNo-->
+    <select id="findbNo" resultType="String">
+        select bNo from book
+    </select>
+    <!--delete-->
+    <delete id="delete">
+        delete from book
+        where bNo=#{bNo}
+    </delete>
+    <!--查找所有的isbn列表-->
+    <select id="findisbn" resultType="String">
+        select ISBN from book;
+    </select>
+    <!--通过bNo查询价格-->
+    <select id="findprice" resultType="Double">
+        select bPrice from book
+        where ISBN=#{isbn}
+    </select>
+    <select id="getbooknums" resultType="int">
+        select booknums from book
+        where ISBN=#{isbn} and bPrice=#{bPrice}
+    </select>
+    <update id="updatenums">
+        update book
+        set booknums=#{booknums}
+        where ISBN=#{isbn} and bPrice=#{bPrice}
+    </update>
+    <update id="updatebDamaged">
+        update book
+        set bDamaged=#{bDamaged}
+        where bNo=#{bNo}
+    </update>
+</mapper>
